@@ -1,0 +1,6 @@
+{
+	"TextThread":0,
+	"PhotoThread":0,
+	"Token":"token",
+	"Proxy":"socks5://xray:1080"
+}
