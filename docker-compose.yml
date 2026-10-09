@@ -1,0 +1,23 @@
+services:
+  xray:
+    image: ghcr.io/xtls/xray-core:latest
+    restart: unless-stopped
+    volumes:
+      - ./config.json:/etc/xray/config.json:ro
+    command: run -c /etc/xray/config.json
+    networks:
+      - tg-net
+
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    networks:
+      - tg-net
+    depends_on:
+      - xray
+
+networks:
+  tg-net:
+    driver: bridge
